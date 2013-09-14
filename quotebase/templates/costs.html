@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br/>
+{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<table class="table table-condensed table-hover">
+	<thead>
+		<tr>
+    	<th>ID #</th>    
+	    <th>Date</th>
+	    <th>Partner</th>
+	    <th>Source</th>
+	    <th>Contact</th>
+	    <th>Relocation Co.</th>
+	    <th>Customer Co.</th>
+	    <th>City & State/Province</th>
+	    <th>Country</th>
+	    <th>City & State/Province</th>
+	    <th>Country</th>
+	    <th>Pet Details</th>
+	    <th>Sent</th>
+	    <th>Converted</th>
+		</tr>
+	<thead>
+	<tbody>
+	    {% for c in cost_list %}    
+	  <tr>
+       <td><a href="/costs/{{ c.id }}">{{ forloop.counter}}</a></td>
+       <td class="short_col">{{ c.date|date:"n/j/y" }}</td>
+       <td>{{ c.assigned }}</td>    
+       <td>{{ c.lead_source }}</td>
+       <td>{{ c.lead_contact }}</td>
+       <td class="long_col">{{ c.relo_company }}</td>
+       <td class="long_col">{{ c.cust_company }}</td>
+       <td class="long_col">{{ c.o_city }} {{ c.o_st_pr }}</td>
+       <td class="long_col">{{ c.o_country }}</td>
+       <td class="long_col">{{ c.d_city }} {{ c.d_st_pr }}</td>
+       <td class="long_col">{{ c.d_country }}</td>
+       <td class="long_col">{{ c.pets }}</td>
+       <td class="short_col">{{ c.sent_date|date:"n/j/y" }}</td>
+       <td class="short_col">{{ c.convert_date|date:"n/j/y" }}</td>
+
+	    </tr>
+	    {% endfor %}
+	</tbody>    
+</table>
+{% endblock %}

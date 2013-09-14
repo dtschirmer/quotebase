@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<form action="." method="post" class="form-inline">{% csrf_token %}
+	{{ form.non_field_errors }}
+	<fieldset>
+	<legend>Quote Form</legend>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-3">	
+					<label for="id_date">Date</label>
+					{{ form.date|attr:"class:form-control"|attr:"id:dp-qf1" }}	{{ form.date.errors }}
+					<label for="id_assigned">Handling:</label>
+					{{ form.assigned|attr:"class:form-control" }}
+				</div>
+				<div class="col-lg-3">
+					<label for="id_lead_type">Lead Type</label>
+					{{ form.lead_type|attr:"class:form-control" }}
+					<label for="id_lead_contact">Lead Contact</label>
+					{{ form.lead_contact|attr:"class:form-control" }}
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Contacts</legend>
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label for="id_coordinator">Relocation Coordinator</label>
+					{{ form.coordinator|attr:"class:form-control"|attr:"placeholder:Name" }}
+					{{ form.coord_email|attr:"class:form-control"|attr:"placeholder:Email" }}	
+					{{ form.coord_phone|attr:"class:form-control"|attr:"placeholder:Phone" }}
+					<label for="id_relo_company">Company</label>
+					{{ form.relo_company|attr:"class:form-control" }}
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label for="id_customer">Customer</label>
+					{{ form.customer|attr:"class:form-control"|attr:"placeholder:Name" }}
+					{{ form.cust_email|attr:"class:form-control"|attr:"placeholder:Email" }}
+					{{ form.cust_phone|attr:"class:form-control"|attr:"placeholder:Phone" }}
+					<label for="id_cust_company">Company</label>
+					{{ form.cust_company|attr:"class:form-control" }}
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="form-group">
+					<label for="id_other_contact">Other Contact</label>
+					{{ form.other_contact|attr:"class:form-control"|attr:"placeholder:Name" }}	
+					{{ form.other_email|attr:"class:form-control"|attr:"placeholder:Email" }}	
+					{{ form.other_phone|attr:"class:form-control"|attr:"placeholder:Phone" }}	
+					<label for="id_other_company">Company</label>
+					{{ form.other_company|attr:"class:form-control" }}
+				</div>
+			</div>
+		</div>
+	</fieldset>	
+	<fieldset>
+		<legend>Pet Details</legend>
+		<div class="row">	
+			<div class="form-group">
+				<div class="col-lg-4">		
+					<label for="id_pets">Pets</label>
+					{{ form.pets|attr:"class:form-control" }}
+				</div>
+				<div class="col-lg-5">
+					<label for="id_pet_notes">Pet Details</label>
+					{% render_field form.pet_notes rows="4" class="form-control" %}				
+				</div>
+			</div>
+		</div>
+		<br/>
+	</fieldset>
+	<fieldset>
+		<legend>Locations</legend>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-1"><strong>Orig.</strong></div>
+				<div class="col-lg-3">{{ form.o_city|attr:"class:form-control"|attr:"placeholder:City" }}</div>
+				<div class="col-lg-2">{{ form.o_st_pr|attr:"class:form-control"|attr:"placeholder:St." }}</div>
+				<div class="col-lg-3">{{ form.o_country|attr:"class:form-control"|attr:"placeholder:Country" }}</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-lg-1"><strong>Dest.</strong></div>
+				<div class="col-lg-3">{{ form.d_city|attr:"class:form-control"|attr:"placeholder:City" }}</div>
+				<div class="col-lg-2">{{ form.d_st_pr|attr:"class:form-control"|attr:"placeholder:St." }}</div>
+				<div class="col-lg-3">{{ form.d_country|attr:"class:form-control"|attr:"placeholder:Country" }}</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-lg-1"><label for="id_notes">Notes</label></div>
+				<div class="col-lg-8">{{ form.notes|attr:"class:form-control"|attr:"rows:4" }}</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Internal Costs</legend>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-3">
+					<label for="id_total_costs">Total Costs</label>
+					{{ form.total_costs|attr:"class:form-control" }}
+					<label for="id_contingency">Contingency</label>
+					{{ form.contingency|attr:"class:form-control" }}
+					<label for="id_incentive">Incentive</label>
+					{{ form.incentive|attr:"class:form-control" }}
+				</div>
+				<div class="col-lg-3">
+					<label for="id_referral_fee">Referral Fee</label>
+					{{ form.referral_fee|attr:"class:form-control" }}
+					<label for="id_cc_fee">CC Fee</label>
+					{{ form.cc_fee|attr:"class:form-control" }}
+					<label for="id_markup">Markup</label>
+					{{ form.markup|attr:"class:form-control" }}
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-lg-3 col-lg-offset-1">
+					<label for="id_total_quote">TOTAL QUOTE</label>
+					{{ form.total_quote|attr:"class:form-control" }}
+				</div>	
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Wrap Up</legend>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-3">
+					<label for="id_prc_approved">PRC Approved</label>
+					{{ form.prc_approved|attr:"class:form-control" }}
+					<label for="id_prc_appvd_date">Appv'd Date</label>
+					{{ form.prc_appvd_date|attr:"class:form-control"|attr:"id:dp-qf2" }}
+					<label for="id_sent_date">Quote Sent</label>
+					{{ form.sent_date|attr:"class:form-control"|attr:"id:dp-qf3" }}
+					<label for="id_convert_date">Convert Date</label>
+					{{ form.convert_date|attr:"class:form-control"|attr:"id:dp-qf4" }}
+					<label for="id_prc">PRC Handling</label>
+					{{ form.prc|attr:"class:form-control" }}
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<br>
+	<fieldset>
+		<div class="form-group">
+			<div class="row">
+				<button type="submit" class="btn btn-default"><a href="{% url 'quotebase.views.main' %}">Cancel</a></button>
+				<input type="submit" value="Save" class="btn btn-default"/>
+			</div>
+		</div>
+	</fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br/>
+{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }} list-unstyled"{% endif %}>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<table class="table table-condensed table-hover table-responsive">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>  
+	    <th>Date</th>
+	    <th>Assigned</th>
+	    <th>Source</th>
+	    <th>Contact</th>
+	    <th>Relocation Co.</th>
+	    <th>Customer Co.</th>
+	    <th>City & State/Province</th>
+	    <th>Country</th>
+	    <th>City & State/Province</th>
+	    <th>Country</th>
+	    <th>Pet Details</th>
+	    <th>Sent</th>
+	    <th>Converted</th>
+		</tr>
+	<thead>
+	<tbody>
+	    {% for q in quotes %}    
+	  <tr>
+			 <td><a href="{% url 'views.quote_detail' q.id %}">View</a></td>
+			 <td><a href="{% url 'views.edit_quote' q.id %}">Edit</a></td>
+       <td class="short_col">{{ q.date|date:"n/j/y" }}</td>
+       <td>{{ q.assigned }}</td>    
+       <td>{{ q.lead_type }}</td>
+       <td>{{ q.lead_contact }}</td>
+       <td class="long_col">{{ q.relo_company }}</td>
+       <td class="long_col">{{ q.cust_company }}</td>
+       <td class="long_col">{{ q.o_city }} {{ q.o_st_pr }}</td>
+       <td class="long_col">{{ q.o_country }}</td>
+       <td class="long_col">{{ q.d_city }} {{ q.d_st_pr }}</td>
+       <td class="long_col">{{ q.d_country }}</td>
+       <td class="long_col">{{ q.pets }}</td>
+       <td class="short_col">{{ q.sent_date|date:"n/j/y" }}</td>
+       <td class="short_col">{{ q.convert_date|date:"n/j/y" }}</td>
+
+	    </tr>
+	    {% endfor %}
+	</tbody>    
+</table>
+
+<div class="pagination">
+	<span class="step-links">
+		{% if quotes.has_previous %}
+			<a href="?page={{ quotes.previous_page_number }}">previous</a>
+		{% endif %}
+		<span class="current">
+			Page {{ quotes.number }} of {{ quotes.paginator.num_pages }}
+		</span>
+	
+	{% if quotes.has_next %}
+		<a href="?page={{ quotes.next_page_number }}">next</a>
+	{% endif %}
+	</span>
+</div>	
+
+{% endblock %}

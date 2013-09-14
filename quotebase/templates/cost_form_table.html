@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<p>Here is the Cost Form:</p>
+
+<form action="{% url 'quotebase.views.new_cost' %}" method="post">{% csrf_token %}
+<fieldset>
+	<p>{{ form.quotes }}</p>
+</fieldset>
+<fieldset>
+	<table class="table-condensed">
+		<tr>
+			<td><label for="id_date">Date</label></td>
+			<td>{{ form.date|attr:"id:dp-cf1" }}</td>
+			<td><label for="id_agent">Agent</label></td>
+			<td>{{ form.agent }}</td>
+			<td><label for="id_estimated">Estimated?</label></td>
+			<td>{{ form.estimated }}</td>
+		</tr>
+		<tr>
+			<td><label for="id_currency">Currency</label></td>
+			<td>{{ form.currency }}</td>
+			<td><label for="id_exchange_rate">Exchange Rate</label></td>
+			<td>{{ form.exchange_rate }}</td>
+			<td><label for="id_service_point">Service Point</label></td>
+			<td>{{ form.service_point }}</td>
+		</tr>
+		<tr>
+			<td><label for="id_o_airport">Origin Airport</label></td>
+			<td>{{ form.o_airport }}</td>
+			<td><label for="id_d_airport">Destination Airport</label></td>
+			<td>{{ form.d_airport }}</td>
+		</tr>
+	</table>
+</fieldset>
+	<hr>	
+	<table class="table-condensed table-bordered" width="940px">
+		<thead>
+			<tr>
+				<th width="20%"></th>
+				<th style="width:10%;">Cost USD</th>
+				<th sytle="width:10%;">Local Cost</th>
+				<th style="width:60%;">Notes</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr>
+				<td><label for="id_af_cost">Air Freight</label></td>
+				<td>{{ form.af_cost }}</td>
+				<td>{{ form.af_cost_lcl }}</td>
+				<td>{{ form.airline }}</td>
+			</tr>
+			
+			<tr>
+				<td><label for="id_af_fee">Surcharges & Fees</label></td>
+				<td>{{ form.af_fee }}</td>
+				<td>{{ form.af_fee_lcl }}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><label for="id_ap_fee_customs">Airport/Customs Fee</label></td>
+				<td>{{ form.ap_fee_customs }}</td>
+				<td>{{ form.ap_fee_lcl }}</td>
+				<td>{{ form.ap_cust_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for"id_transportation">Transporation</label></td>
+				<td>{{ form.transportation }}</td>
+				<td>{{ form.trans_lcl }}</td>
+				<td>{{ form.trans_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for"id_boarding">Boarding</label></td>
+				<td>{{ form.boarding }}</td>
+				<td>{{ form.board_lcl }}</td>
+				<td>{{ form.board_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for"id_travel_kennel">Travel Kennel</label></td>
+				<td>{{ form.travel_kennel }}</td>
+				<td>{{ form.tk_lcl }}</td>
+				<td>{{ form.tk_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for"id_vaccination">Vaccination</label></td>
+				<td>{{ form.vaccination }}</td>
+				<td>{{ form.vcn_lcl }}</td>
+				<td>{{ form.vcn_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for"id_parasite">Parasites</label></td>
+				<td>{{ form.parasite }}</td>
+				<td>{{ form.para_lcl }}</td>
+				<td>{{ form.para_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_health_cert">Health Certificate</label></td>
+				<td>{{ form.health_cert }}</td>
+				<td>{{ form.hc_lcl }}</td>
+				<td>{{ form.hc_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_hc_2">2nd HC</label></td>
+				<td>{{ form.hc_2 }}</td>
+				<td>{{ form.hc_2_lcl }}</td>
+				<td>{{ form.hc_2_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_gov_end">Gov. Endorsement</label></td>
+				<td>{{ form.gov_endorse }}</td>
+				<td>{{ form.gov_end_lcl }}</td>
+				<td>{{ form.gov_end_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_postage">Postage</label></td>
+				<td>{{ form.postage }}</td>
+				<td>{{ form.post_lcl }}</td>
+				<td>{{ form.post_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_gov_permit">Import/Export Permit</label></td>
+				<td>{{ form.gov_permit }}</td>
+				<td>{{ form.gov_perm_lcl }}</td>
+				<td>{{ form.gov_perm_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_quarantine">Quarantine</label></td>
+				<td>{{ form.quarantine }}</td>
+				<td>{{ form.q_lcl }}</td>
+				<td>{{ form.q_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_other_cost">{{ form.other_name }}</label></td>
+				<td>{{ form.other_cost }}</td>
+				<td>{{ form.other_lcl }}</td>
+				<td>{{ form.other_notes }}</td>
+			</tr>
+			<tr>
+				<td><label for"id_total_cost">Total Cost</label></td>
+				<td>{{ form.total_cost }}</td>
+				<td>{{ form.total_lcl }}</td>
+			</tr>
+			<tr>
+				<td><label for="id_notes">Notes</label></td>
+				<td colspan="3">{{ form.notes }}</td>
+			</tr>	
+		</tbody>
+	</table>
+	<input type="submit" value="Save" />
+</form>
+{% endblock %}

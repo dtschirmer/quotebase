@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="navbar">
+	<ul class="nav navbar-nav">
+		<li><a href="/cost/new/">Add Cost</a></li>
+		<li><a href="/quote/{{ q.id }}/compare/">Compare Costs</a></li>
+		<li><a href="/quote/{{ q_detail.id }}/edit/">Edit Quote</a></li>
+		<li><a>Upload File</a></li>
+		<li><a>Save & Print</a></li>
+	</ul>
+</div>
+
+<h3 style="text-align:center;">WorldCare Quote Sheet</h3>
+
+<ul class="list-unstyled list-inline">
+  <li><strong>Date:&nbsp;</strong>{{ q_detail.date|date:"n/j/y" }}</li>
+  <li><strong>| Assigned:&nbsp;</strong>{{ q_detail.assigned }}</li>
+  <li><strong>| Sent Date:&nbsp;</strong>{{ q_detail.sent_date|date:"n/j/y" }}</li>
+	<li><strong>Lead Type:&nbsp;</strong>{{ q_detail.lead_type }}</li>
+	<li><strong>| Lead Contact:&nbsp;</strong>{{ q_detail.lead_contact }}</li>
+</ul>
+<h4>Lead Info</h4>
+<div class="row">  
+	<div class="col-lg-3">
+		<h4>Relo Coordinator</h4>  
+		<div><strong>Name&nbsp;</strong>{{ q_detail.coordinator }}</div>
+		<div><strong>Email&nbsp;</strong>{{ q_detail.coord_email }}</div>
+		<div><strong>Phone&nbsp;</strong>{{ q_detail.coord_phone }}</div>
+		<div><strong>Company&nbsp;</strong>{{ q_detail.relo_company }}</div>
+	</div>
+	<div class="col-lg-3"> 
+		<h4>Customer Info</h4>   
+		<div><strong>Name&nbsp;</strong>{{ q_detail.customer }}</div>
+		<div><strong>Email&nbsp;</strong>{{ q_detail.cust_email}}</div>
+		<div><strong>Phone&nbsp;</strong>{{ q_detail.cust_phone}}</div>
+		<div><strong>Company&nbsp;</strong>{{ q_detail.cust_company }}</div>
+	</div>
+	<div class="col-lg-3">
+		<h4>Other Contact</h4>
+			<div><strong>Name&nbsp;</strong>{{ q_detail.other_contact }}</div>
+			<div><strong>Email&nbsp;</strong>{{ q_detail.other_email }}</div>
+			<div><strong>Phone&nbsp;</strong>{{ q_detail.other_phone }}</div>
+			<div><strong>Company&nbsp;</strong>{{ q_detail.other_company }}</div>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-lg-1"><h4>Pets</h4></div>
+	<div class="col-lg-2">{{ q_detail.pets }}</div>
+	<div class="col-lg-4">{{ q_detail.pet_notes }}</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-lg-2">
+		<h4>Origin</h4>
+	</div>
+	<div class="col-lg-2">
+		<div>{{ q_detail.o_city }}&nbsp;{{ q_detail.o_st_pr }}</div><div>{{ q_detail.o_country }}</div>
+	</div>
+	<div class="col-lg-2">	
+		<h4>Destination</h4>
+	</div>
+	<div class="col-lg-2">
+		<div>{{ q_detail.d_city }}&nbsp;{{ q_detail.d_st_pr }}</div><div>{{ q_detail.d_country }}</div>
+	</div>
+</div> 
+<hr>
+<h4>Origin Costs</h4>
+<hr>
+<h4>Middle/Transit Costs</h4>
+<hr>
+<h4>Destination</h4>
+<hr>
+<h4>Internal Costs</h4>
+
+		<div><strong></strong>{{ q_detail.total_costs }}</div>
+		<div><strong></strong>{{ q_detail.contingency }}</div>
+		<div><strong></strong>{{ q_detail.incentive }}</div>
+		<div><strong></strong>{{ q_detail.referral_fee }}</div>
+		<div><strong></strong>{{ q_detail.cc_fee }}</div>
+		<div><strong></strong>{{ q_detail.markup }}</div>
+		<div><strong></strong>{{ q_detail.total_quote }}</div>
+<hr>
+<strong>Post-Quote Wrap-up</strong>
+<div>{{ q_detail.prc_approved }}</div>
+<div>{{ q_detail.prc_appvd_date|date:"n/j/y" }}</div>
+<div>{{ q_detail.convert_date|date:"n/j/y" }}</div>
+<div>{{ q_detail.prc }}</div>
+<div>{{ q_detail.notes }}</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+air freight
+fedex
+government endorsement
+health certificates
+transportation
+airport fees
+other
+
+Each quote has a "notes" row like on the quote sheet:
+notes row 1,
+notest row 2,
+notes row 3,
+
+etc. We will be able to compare different costs, but when the costs are selected and printed onto our internal cost sheet, there will be notes rows over the page. We will very rarely be comparing lots of vendors, usually 1, 3 at the most. We will be comparing vendors across different quotes more often now, than getting tons of costs for the same quote all at once. That being the case, notes fields in each cost are ok.
+
+Quote Header Sections: -- 1 Table per each  --  only 2 needed?
+Internal Lead Info (handling)
+Lead Info
+trip info
+Origin Cost
+
+date            = models.DateField()
+    assigned        = models.CharField(max_length=30)
+    lead_type       = models.CharField(max_length=30, choices=LEAD_TYPE_CHOICES)
+    lead_contact    = models.CharField(max_length=30, choices=LEAD_CONTACT_CHOICES)
+    coordinator     = models.CharField(max_length=30, blank=True)
+    coord_email     = models.EmailField(blank=True)
+    coord_phone     = models.CharField(max_length=30, blank=True)
+    relo_company    = models.ForeignKey('contacts.Relo_Company', db_index=False, blank=True)
+    customer        = models.CharField(max_length=30, blank=True)
+    cust_email      = models.EmailField(max_length=30, blank=True)
+    cust_phone      = models.CharField(max_length=30, blank=True)
+    cust_company    = models.CharField(max_length=30)
+    other_contact   = models.CharField(max_length=30, blank=True)
+    other_email     = models.EmailField(max_length=30, blank=True)
+    other_phone     = models.CharField(max_length=30, blank=True)
+    other_company   = models.CharField(max_length=30)
+    o_city          = models.CharField(max_length=50, blank=True)
+    o_st_pr         = models.CharField(max_length=2, blank=True)
+    o_country       = models.CharField(max_length=50)
+    d_city          = models.CharField(max_length=50, blank=True)
+    d_st_pr         = models.CharField(max_length=2, blank=True)
+    d_country       = models.CharField(max_length=50)
+    pets            = models.CharField(max_length=50)
+    pet_notes       = models.TextField(max_length=100, blank=True)
+

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<p>Here is the Cost Form:</p>
+<form action="/cost/new" method="post">{% csrf_token %}
+
+<div>{{ form.date }}</div>
+<div>{{ form.agent }}</div>
+<div>{{ form.estimated }}</div>
+<div>{{ form.currency }}</div>
+<div>{{ form.exchange_rate }}</div>
+<div>{{ form.service_point }}</div>
+<div>{{ form.airline }}</div>
+<div>{{ form.o_airport }}</div>
+<div>{{ form.d_airport }}</div>
+<div>{{ form.af_cost }}</div>
+<div>{{ form.af_cost_lcl }}</div>
+<div>{{ form.af_fee }}</div>
+<div>{{ form.af_fee_lcl }}</div>
+<div>{{ form.ap_fee_customs }}</div>
+<div>{{ form.ap_fee_lcl }}</div>
+<div>{{ form.ap_cust_notes }}</div>
+<div>{{ form.transportation }}</div>
+<div>{{ form.trans_lcl }}</div>
+<div>{{ form.trans_notes }}</div>
+<div>{{ form.travel_kennel }}</div>
+<div>{{ form.tk_lcl }}</div>
+<div>{{ form.tk_notes }}</div>
+<div>{{ form.vaccination }}</div>
+<div>{{ form.vcn_lcl }}</div>
+<div>{{ form.vcn_notes }}</div>
+<div>{{ form.parasite }}</div>
+<div>{{ form.para_lcl }}</div>
+<div>{{ form.para_notes }}</div>
+<div>{{ form.health_cert }}</div>
+<div>{{ form.hc_lcl }}</div>
+<div>{{ form.hc_notes }}</div>
+<div>{{ form.hc_2 }}</div>
+<div>{{ form.hc_2_lcl }}</div>
+<div>{{ form.hc_2_notes }}</div>
+<div>{{ form.gov_endorse }}</div>
+<div>{{ form.gov_end_lcl }}</div>
+<div>{{ form.gov_end_notes }}</div>
+<div>{{ form.postage }}</div>
+<div>{{ form.post_lcl }}</div>
+<div>{{ form.post_notes }}</div>
+<div>{{ form.gov_permit }}</div>
+<div>{{ form.gov_perm_lcl }}</div>
+<div>{{ form.gov_perm_notes }}</div>
+<div>{{ form.quarantine }}</div>
+<div>{{ form.q_lcl }}</div>
+<div>{{ form.q_notes }}</div>
+<div>{{ form.boarding }}</div>
+<div>{{ form.board_lcl }}</div>
+<div>{{ form.board_notes }}</div>
+<div>{{ form.other_name }}</div>
+<div>{{ form.other_cost }}</div>
+<div>{{ form.other_lcl }}</div>
+<div>{{ form.other_notes }}</div>
+<div>{{ form.total_cost }}</div>
+<div>{{ form.total_lcl }}</div>
+<div>{{ form.notes }}</div>
+<div>Item</div>
+<div>USD Cost</div>
+<div>Local Cost</div>
+
+<input type="submit" value="Add" />
+</form>
+{% endblock %}

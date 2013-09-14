@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h1>Welcome to Quotebase</h1>
+    <h3>Please login to access the quotes</h3>
+
+	{% if messages %}
+	<ul class="messages">
+		{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }} list-unstyled has-error"{% endif %}>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	    <form method="post" action="{% url 'quotebase.views.login_user' %}">
+	        {% csrf_token %}
+	        <table>
+	            <tr>
+	                <td><label for="id_username">Username</label>&nbsp;</td>
+	                <td>{{ form.username|attr:"class:form-control"}}</td>
+	            </tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+	            <tr>
+	                <td><label for="id_password">Password </label>&nbsp;</td>
+	                <td>{{ form.password|attr:"class:form-control" }}</td>
+	            </tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+	       </table>
+	       <input type="submit" value="login" class="btn btn-default"/>
+	   </form>
+{% endblock %}
